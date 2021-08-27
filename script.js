@@ -128,7 +128,6 @@ function newConcat(...array){
             newArr.push(array[i])
 
         }
-        
     }
     return newArr
 }
@@ -169,14 +168,13 @@ function  newJoin(array, separator=','){
     return str
 }
 
-function newReduce(array,callback){
-    let acummulator = 0
+function newReduce(array,callback, acumulador){
+    let acc = acumulador
     for(let index = 0 ; index<array.length;index++){
         let currentValue = array[index]
-        acummulator = reduceCallBack(acummulator,currentValue,index,array,0)
+        acc = callback(acc,currentValue,index,array)
     }
-    return acummulator
+    return acc
 }
-function reduceCallBack(acummulator,currentValue,index,array,startValue=0){
-    return acummulator+currentValue
-}
+
+  
