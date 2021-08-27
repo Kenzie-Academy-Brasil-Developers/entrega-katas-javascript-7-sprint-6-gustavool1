@@ -149,13 +149,19 @@ function newIndexOf(array,searchElement,fromIndex=0){
 }
 
 // ---------------------- join -------------------
-let word = ['Meu', 'nome', 'é', 'Gustavo']
+let word = ['Meu', 'nome', , 'Gustavo']
 function  newJoin(array, separator=','){
     let str = ''
     for(let i=0; i<array.length;i++){
         if(i=== array.length-1){
+            if(array[i] === undefined || array[i]===null){
+                array[i] = ""
+            }
             str += array[i]    
         }else{
+            if(array[i] === undefined || array[i]===null ){
+                array[i] = ""
+            }
             str += array[i] + separator
         }
         
@@ -190,4 +196,16 @@ function newSlice(array,begin=0, end=array.length){
     
     return arr
 }
+
+// function newFlat(array, profundidade=1){
+//     let arr = []
+//     let j = 0    
+//     for(let i=0; i<array.length;i++){
+//         if(Array.isArray(array[i])){
+//             console.log(array[i])
+//         }
+//         arr.push(array[i]) 
+//     }   
+//     console.log(ar      r)
+// }
 
