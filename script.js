@@ -23,7 +23,6 @@ function newFill(array,value,begin=0,end=array.length){
     return array
 }
 // ---------------- map --------------------
-let mapTeste = arrMap.map((elemento)=>elemento*2)
 function newMap(array,callback){
     let retorno = []
     for(let i=0; i<array.length;i++){
