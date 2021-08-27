@@ -72,20 +72,15 @@ function newMap(array,callback){
  function newFindIndex(array, callback){
      for(let index=0; index<array.length;index++){
         let currentElement = array[index]
-        if(findIndexCallBack(currentElement,index,array) !== -1){
+        if(callback(currentElement,index)){
             return index
         }
      }
      return -1
  }
- function findIndexCallBack(currentElement,index,array){
-    if(currentElement === 'bolo'){
-        return index
-    }
-    return -1
- }
+ let everyArr = [0,2,3,4,5,6,7,6,8]
  //----------------every() -----------------
-let everyArr = [0,2,3,4,5,6,7,6,8]
+
  function newEvery(array,callback){
     let cont = 0
     for(let index=0; index<array.length;index++){
@@ -107,26 +102,33 @@ function  newFilter(array, callback){
     let newArr = []
     for(let index=0; index<array.length;index++){
         let currentElement = array[index]
-        if(newFilterCallBack(currentElement,index,array) !== undefined){
-            let filtered = 
-            newArr.push(newFilterCallBack(currentElement,index,array))
+        if(callback(currentElement,index,array ) !== undefined){
+            newArr.push(callback(currentElement,index,array))
         }
     }
     return newArr
 }
-function newFilterCallBack(currentElement,index,array){
-    if(currentElement === 8){
+const callbackFilter = (currentElement, index)=>{
+    if(currentElement === 0){
         return currentElement
     }
 }
+
 // ----------- concat -----------------
 
 function newConcat(...array){
     let newArr = []
+    
     for(let i=0;i<array.length;i++){
-        for(let j=0; j<array[i].length;j++){
-            newArr.push(array[i][j])
+        if(Array.isArray(array[i])){
+            for(let j=0; j<array[i].length;j++){
+                newArr.push(array[i][j])
+            }
+        }else{
+            newArr.push(array[i])
+
         }
+        
     }
     return newArr
 }
