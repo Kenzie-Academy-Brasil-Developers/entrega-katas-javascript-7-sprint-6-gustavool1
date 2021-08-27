@@ -108,11 +108,6 @@ function  newFilter(array, callback){
     }
     return newArr
 }
-const callbackFilter = (currentElement, index)=>{
-    if(currentElement === 0){
-        return currentElement
-    }
-}
 
 // ----------- concat -----------------
 
@@ -167,6 +162,7 @@ function  newJoin(array, separator=','){
     }
     return str
 }
+// ---------------------- newREduce -------------------
 
 function newReduce(array,callback, acumulador){
     let acc = acumulador
@@ -177,4 +173,21 @@ function newReduce(array,callback, acumulador){
     return acc
 }
 
-  
+// ------------------- newSlice --------------------
+function newSlice(array,begin=0, end=array.length){
+    let arr = []
+    if(begin>=0){
+        for(let i=begin;i<end;i++){
+            arr.push(array[i])
+        }
+    }else{
+        begin = end +begin
+        console.log(begin)
+        for(let i=begin;i<end;i++){
+            arr.push(array[i])
+        }
+    }
+    
+    return arr
+}
+
